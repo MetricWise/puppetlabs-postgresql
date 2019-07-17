@@ -67,7 +67,7 @@ define postgresql::validate_db_connection(
 
   exec { $exec_name:
     command     => "echo 'Unable to connect to defined database using: ${cmd}' && false",
-    unless      => $validate_cmd,
+    onlyif      => $validate_cmd,
     cwd         => $module_workdir,
     environment => $env,
     logoutput   => 'on_failure',
